@@ -16,26 +16,51 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 text-center my-5">
-          <h1>Walken colcolatore di vittorie giornaliero</h1>
+          <h1>Walken calcolatore di vittorie giornaliero</h1>
         </div>
-        <div id="form" class="row col-8 offset-2">
-          <div id="walken-price" class="col-md-12 mb-3 my-5 text-center">
-            <h2>calcolo valore aggiornato wolken in corso.....</h2>
+        <div class="offset-2 col-8 text-center">
+          <label for="formGroupExampleInput" class="form-label text-info fw-bold">Qual e il tuo rank ?</label>
+          <select class="form-select" id="selettore" aria-label="Floating label select example"></select>
+          <button onclick="lega(calcolatore)">Seleziona il tuo Rank</button>
+        </div>
+        <div id="calcolatore" class="d-none">
+          <div id="form" class="row col-8 offset-2">
+            <div id="walken-price" class="col-md-12 mb-3 my-5 text-center">
+              <h2>calcolo valore aggiornato walken in corso.....</h2>
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput" class="form-label text-info fw-bold">Numero di vittorie lega 1</label>
+              <input type="text" class="form-control" id="vl1" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 2</label>
+              <input type="text" class="form-control" id="vl2" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 3</label>
+              <input type="text" class="form-control" id="vl3" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput" class="form-label text-info fw-bold">Numero di vittorie lega 4</label>
+              <input type="text" class="form-control" id="vl4" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 5</label>
+              <input type="text" class="form-control" id="vl5" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 6</label>
+              <input type="text" class="form-control" id="vl6" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 7</label>
+              <input type="text" class="form-control" id="vl7" placeholder="inserisci il numero di vittorie" />
+            </div>
+            <div class="col-12">
+              <button class="btn btn-info text-dark" onclick="calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7,text,attuale)">Calcola</button>
+            </div>
+            <div id="text" class="col-12 my-5"></div>
           </div>
-          <div class="col-md-4 mb-3 my-5 text-center">
-            <label for="formGroupExampleInput" class="form-label text-info fw-bold">Numero di vittorie lega 4</label>
-            <input type="text" class="form-control" id="vl4" placeholder="inserisci il numero di vittorie" />
-          </div>
-          <div class="col-md-4 mb-3 my-5 text-center">
-            <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 5</label>
-            <input type="text" class="form-control" id="vl5" placeholder="inserisci il numero di vittorie" />
-          </div>
-          <div class="col-md-4 mb-3 my-5 text-center">
-            <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 6</label>
-            <input type="text" class="form-control" id="vl6" placeholder="inserisci il numero di vittorie" />
-          </div>
-          <div class="col-12"><button class="btn btn-info text-dark" onclick="calcola(vl4,vl5,vl6,text,attuale)">Calcola</button></div>
-          <div id="text" class="col-12 my-5"></div>
         </div>
       </div>
     </div>
@@ -45,13 +70,66 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      function calcola(vl4, vl5, vl6, text, attuale) {
-        let wv4 = vl4.value * 0.45;
-        let wv5 = vl5.value * 0.77;
-        let wv6 = vl6.value * 1.52;
-        let wvt = wv5 + wv6 + wv4;
+      let selector = document.getElementById("selettore");
+      for (let i = 0; i <= 10; i++) {
+        let option = document.createElement("option");
+        option.text = i;
+        option.value = i;
+        selector.add(option);
+      }
+      let wfv;
+      console.log(selector.value);
+      function lega(calcolatore) {
+        calcolatore.classList.toggle("d-none");
+        switch (selector.value) {
+          case "0":
+            wfv = [0.1, 0.19, 0.45, 0.51, 1.01, 2.57, 5.14];
+            break;
+          case "1":
+            wfv = [0.1, 0.19, 0.45, 0.57, 1.11, 2.83, 5.65];
+            break;
+          case "2":
+            wfv = [0.1, 0.19, 0.45, 0.62, 1.21, 3.08, 6.17];
+            break;
+          case "3":
+            wfv = [0.1, 0.19, 0.45, 0.67, 1.32, 3.34, 6.68];
+            break;
+          case "4":
+            wfv = [0.1, 0.19, 0.45, 0.72, 1.42, 3.6, 7.2];
+            break;
+          case "5":
+            wfv = [0.1, 0.19, 0.45, 0.77, 1.52, 3.85, 7.71];
+            break;
+          case "6":
+            wfv = [0.1, 0.19, 0.45, 0.82, 1.62, 4.11, 8.22];
+            break;
+          case "7":
+            wfv = [0.1, 0.19, 0.45, 0.87, 1.72, 4.37, 8.74];
+            break;
+          case "8":
+            wfv = [0.1, 0.19, 0.45, 0.93, 1.82, 4.63, 9.25];
+            break;
+          case "9":
+            wfv = [0.1, 0.19, 0.45, 0.98, 1.92, 4.88, 9.77];
+            break;
+          case "10":
+            wfv = [0.1, 0.19, 0.45, 1.03, 2.02, 5.14, 10.28];
+            break;
+          default:
+            wfv = [0.1, 0.19, 0.45, 0.51, 1.01, 2.57, 5.14];
+        }
+      }
+      function calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7, text, attuale) {
+        let wv1 = vl1.value * wfv[0];
+        let wv2 = vl2.value * wfv[1];
+        let wv3 = vl3.value * wfv[2];
+        let wv4 = vl4.value * wfv[3];
+        let wv5 = vl5.value * wfv[4];
+        let wv6 = vl6.value * wfv[5];
+        let wv7 = vl7.value * wfv[6];
+        let wvt = wv1 + wv2 + wv3 + wv4 + wv5 + wv6 + wv7;
         let in_euro = wvt * attuale.value;
-        text.innerHTML = "<h2>Oggi hai guadagnato " + wvt.toFixed(2) + " Walken</h2> <h2>In euro sono: " + in_euro.toFixed(2) + "</h2>";
+        text.innerHTML = "<h2>Oggi hai guadagnato " + wvt.toFixed(2) + " Walken</h2> <h2>In euro sono: " + in_euro.toFixed(2) + "€ </h2>";
       }
       var request = new XMLHttpRequest();
       var url = "https://api.coingecko.com/api/v3/simple/price?ids=walken&vs_currencies=usd";
@@ -62,10 +140,10 @@
           var response = JSON.parse(request.responseText);
           var price = response.walken.usd;
           document.getElementById("walken-price").innerHTML =
-            `<label for="formGroupExampleInput2" class="form-label text-info fw-bold">Valore walken attuale</label>
-            <input type="text" class="form-control" id="attuale" value="` +
+            `<label  class="form-label text-info fw-bold" >Valore walken attuale: </label>
+            <input type="text" class="col-3 " id="attuale" value="` +
             price +
-            `" placeholder="inserisci il numero di vittorie" value="1" disabled />`;
+            `" id="attuale"   disabled="">`;
         } else {
           console.log("Errore nella richiesta API:", request.status);
         }
