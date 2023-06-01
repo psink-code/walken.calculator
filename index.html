@@ -51,7 +51,7 @@
         let wv6 = vl6.value * 1.52;
         let wvt = wv5 + wv6 + wv4;
         let in_euro = wvt * attuale.value;
-        text.innerHTML = "<h2>Oggi hai guadagnato " + wvt.toFixed(3) + " Walken</h2> <h2>In euro sono: " + in_euro.toFixed(2) + "</h2>";
+        text.innerHTML = "<h2>Oggi hai guadagnato " + wvt.toFixed(2) + " Walken</h2> <h2>In euro sono: " + in_euro.toFixed(2) + "</h2>";
       }
       var request = new XMLHttpRequest();
       var url = "https://api.coingecko.com/api/v3/simple/price?ids=walken&vs_currencies=usd";
