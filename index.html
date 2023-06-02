@@ -56,8 +56,12 @@
               <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Numero di vittorie lega 7</label>
               <input type="text" class="form-control" id="vl7" placeholder="inserisci il numero di vittorie" />
             </div>
+            <div class="col-md-4 mb-3 my-5 text-center">
+              <label for="formGroupExampleInput2" class="form-label text-info fw-bold">Altre fonti: </label>
+              <input type="text" class="form-control" id="altre_fonti" placeholder="inserisci il numero di vittorie" />
+            </div>
             <div class="col-12">
-              <button class="btn btn-info text-dark" onclick="calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7,text,attuale)">Calcola</button>
+              <button class="btn btn-info text-dark" onclick="calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7,altre_fonti,text,attuale)">Calcola</button>
             </div>
             <div id="text" class="col-12 my-5"></div>
           </div>
@@ -119,7 +123,8 @@
             wfv = [0.1, 0.19, 0.45, 0.51, 1.01, 2.57, 5.14];
         }
       }
-      function calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7, text, attuale) {
+      function calcola(vl1, vl2, vl3, vl4, vl5, vl6, vl7, altre_fonti, text, attuale) {
+        console.log(altre_fonti.value);
         let wv1 = vl1.value * wfv[0];
         let wv2 = vl2.value * wfv[1];
         let wv3 = vl3.value * wfv[2];
@@ -127,7 +132,8 @@
         let wv5 = vl5.value * wfv[4];
         let wv6 = vl6.value * wfv[5];
         let wv7 = vl7.value * wfv[6];
-        let wvt = wv1 + wv2 + wv3 + wv4 + wv5 + wv6 + wv7;
+        let altre = Number(altre_fonti.value);
+        let wvt = wv1 + wv2 + wv3 + wv4 + wv5 + wv6 + wv7 + altre;
         let in_euro = wvt * attuale.value;
         text.innerHTML = "<h2>Oggi hai guadagnato " + wvt.toFixed(2) + " Walken</h2> <h2>In euro sono: " + in_euro.toFixed(2) + "€ </h2>";
       }
